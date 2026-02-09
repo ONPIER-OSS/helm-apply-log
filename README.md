@@ -28,7 +28,7 @@ $ git tag v0.4.0 -m "Some message"
 
 Then you should be able to install the new version by the command written in the "Installation" section, don't forget to update the version in the export command.
 
-Also, it makes sense to keep this README up-to-date with the currently released version
+Also, it makes sense to keep this README up-to-date with the current latest release
 
 ## How to use with helmfile
 
