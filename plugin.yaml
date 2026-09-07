@@ -2,7 +2,7 @@ apiVersion: v1
 type: postrenderer/v1
 name: apply-log
 runtime: subprocess
-version: 0.3.0
+version: 0.3.1
 runtimeConfig:
   platformCommand:
     - command: "$HELM_PLUGIN_DIR/plugin.sh"
