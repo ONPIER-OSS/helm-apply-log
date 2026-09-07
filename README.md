@@ -10,20 +10,31 @@ It contains the following data:
 - Status (It's "dirty" when there are uncommitted changes, otherwise - "clean")
 
 ## Installation
-
-Execute the following command:
+Download the public key from the release artifacts and import it.
 ```shell
-# -- For the version v0.3.0
-$ export VERSION=v0.3.0
-$ helm plugin install "https://github.com/ONPIER-OSS/helm-apply-log/archive/refs/tags/${VERSION}.tar.gz"
+# -- For the version v0.3.1
+$ export VERSION=0.3.1
+$ curl -LO https://github.com/ONPIER-OSS/helm-apply-log/releases/download/v${VERSION}/pubkey.asc
+$ gpg --import pubkey.asc
+```
+
+Create keyring file. (Helm uses this file by default to verify the plugin)
+```shell
+$ gpg --export >~/.gnupg/pubring.gpg;
+```
+
+
+Install the plugin:
+```shell
+$ helm plugin install --verify "https://github.com/ONPIER-OSS/helm-apply-log/releases/download/v${VERSION}/apply-log-${VERSION}.tgz"
 ```
 
 ## Release a new version
 
-To release a new version, update the `plugin.yaml` file and simply create a new git tag in the repo. For example
+To release a new version, bump the version in the `plugin.yaml` file and open a pull request. Simply run the `release.sh` after merging you pull request.
 
 ```shell
-$ git tag v0.4.0 -m "Some message"
+$ ./release.sh
 ```
 
 Then you should be able to install the new version by the command written in the "Installation" section, don't forget to update the version in the export command.
